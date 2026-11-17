@@ -1,0 +1,206 @@
+:root {
+  --portail: #97ce4c;
+  --portail-clair: #b8f26a;
+  --cyan: #44d9e8;
+  --espace: #070b14;
+  --carte: #121c26;
+  --texte: #e9f3e0;
+  --discret: #8fa6a0;
+  --font-titre: "Bangers", "Impact", sans-serif;
+  --font-texte: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-texte);
+  color: var(--texte);
+  line-height: 1.5;
+  background:
+    radial-gradient(1px 1px at 12% 20%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 12%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 40% 60%, #cfe 50%, transparent 51%),
+    radial-gradient(1px 1px at 88% 75%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 25% 85%, #fff 50%, transparent 51%),
+    radial-gradient(ellipse at 15% 0%, rgba(68, 217, 232, 0.18), transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(151, 206, 76, 0.16), transparent 55%),
+    var(--espace);
+  background-attachment: fixed;
+}
+
+.entete {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem 2rem;
+  align-items: end;
+  padding: 2.5rem 1rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-family: var(--font-titre);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--portail-clair);
+  -webkit-text-stroke: 2px #0b1d0e;
+  paint-order: stroke fill;
+  text-shadow: 0 0 22px rgba(151, 206, 76, 0.7), 4px 4px 0 #0b1d0e;
+}
+
+.generique-bloc {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+
+.compteur-bloc { margin: 0; }
+#compteur {
+  font-family: var(--font-titre);
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--cyan);
+  text-shadow: 0 0 14px rgba(68, 217, 232, 0.7);
+  font-variant-numeric: tabular-nums;
+}
+.compteur-label { display: block; color: var(--discret); font-size: 0.9rem; }
+
+.jauge {
+  width: 16px;
+  height: 80px;
+  background: #0c1520;
+  border: 2px solid var(--portail);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.jauge__barre {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to top, var(--portail), var(--portail-clair));
+}
+
+.commandes { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.commandes label { color: var(--discret); display: flex; align-items: center; gap: 0.5rem; }
+input[type="range"] { accent-color: var(--portail); }
+#vitesse-valeur { color: var(--portail-clair); font-weight: 800; min-width: 3ch; }
+
+button {
+  font-family: var(--font-titre);
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 1.2rem;
+  border: 2px solid #0b1d0e;
+  border-radius: 999px;
+  background: var(--portail);
+  color: #0b1d0e;
+  box-shadow: 0 0 14px rgba(151, 206, 76, 0.55);
+  cursor: pointer;
+}
+button:focus-visible, input:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+
+main { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+
+#message {
+  padding: 1rem 1.25rem;
+  background: var(--carte);
+  border: 2px solid #ff6b6b;
+  border-radius: 12px;
+}
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Carte : écran de la Citadelle, bord néon vert */
+.carte {
+  position: relative;
+  background: linear-gradient(160deg, #16232d, var(--carte) 60%);
+  border: 2px solid var(--portail);
+  border-radius: 18px;
+  padding: 1rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* L'image est vue à travers un portail vert qui tourne */
+.carte__portail {
+  position: relative;
+  width: 76%;
+  margin: 0.25rem auto 0.75rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 6px;
+  background: conic-gradient(from 0deg, var(--portail-clair), #2a6b1f, var(--cyan), var(--portail), var(--portail-clair));
+  box-shadow: 0 0 18px rgba(151, 206, 76, 0.65);
+}
+.carte__portail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0b1d0e;
+}
+
+.carte h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-titre);
+  font-weight: 400;
+  font-size: 1.45rem;
+  letter-spacing: 0.04em;
+  color: var(--portail-clair);
+}
+.carte p { margin: 0.3rem 0 0; color: var(--discret); font-size: 0.88rem; }
+.carte__episodes { color: var(--cyan) !important; font-weight: 700; }
+
+.pastille {
+  display: inline-block;
+  padding: 0.05rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #0b1d0e;
+  border: 2px solid #0b1d0e;
+}
+.pastille--vivant { background: var(--portail); box-shadow: 0 0 10px rgba(151, 206, 76, 0.8); }
+.pastille--mort { background: #ff6b6b; box-shadow: 0 0 10px rgba(255, 107, 107, 0.7); }
+.pastille--inconnu { background: #c9a6ff; box-shadow: 0 0 10px rgba(201, 166, 255, 0.7); }
+
+.bilan {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin: 4rem 0 2rem;
+  padding: 3rem 1.5rem;
+  background: var(--carte);
+  border: 2px dashed var(--portail);
+  border-radius: 18px;
+  text-align: center;
+}
+.bilan__item strong {
+  display: block;
+  font-family: var(--font-titre);
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: var(--portail-clair);
+  text-shadow: 0 0 14px rgba(151, 206, 76, 0.6);
+}
+.bilan__item span { color: var(--discret); }
+
+footer { max-width: 1100px; margin: 1rem auto 0; padding: 1rem 1rem 2rem; color: var(--discret); }
+
+@media (max-width: 600px) {
+  .entete { grid-template-columns: 1fr; }
+}
+
+[hidden] { display: none !important; }

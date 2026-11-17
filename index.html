@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Générique de la galerie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js" integrity="sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="entete">
+    <h1 id="titre">Galerie des Humanoïdes</h1>
+
+    <div class="generique-bloc">
+      <p class="compteur-bloc">
+        <span id="compteur" aria-live="off">0</span>
+        <span class="compteur-label">épisodes couverts</span>
+      </p>
+      <div class="jauge" aria-hidden="true">
+        <div class="jauge__barre" id="jauge-barre"></div>
+      </div>
+    </div>
+
+    <div class="commandes">
+      <button type="button" id="rejouer">Rejouer</button>
+      <label for="vitesse">Vitesse
+        <input type="range" id="vitesse" min="0.25" max="2" step="0.25" value="1">
+      </label>
+      <output id="vitesse-valeur" for="vitesse">×1</output>
+    </div>
+  </header>
+
+  <main>
+    <p id="message" role="status" hidden>Impossible d'afficher la galerie : aucun personnage ne correspond à ce filtre, ou l'API est injoignable.</p>
+    <section id="grille" class="grille" aria-label="Personnages"></section>
+
+    <section id="bilan" class="bilan" aria-label="Bilan de la sélection" hidden>
+      <div class="bilan__item"><strong id="bilan-personnages">0</strong><span>personnages</span></div>
+      <div class="bilan__item"><strong id="bilan-premier">0</strong><span>premier épisode le plus tôt</span></div>
+      <div class="bilan__item"><strong id="bilan-dernier">0</strong><span>premier épisode le plus tard</span></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Réalisé par Romain Scheers</p>
+  </footer>
+</body>
+</html>
